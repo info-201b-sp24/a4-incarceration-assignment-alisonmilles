@@ -1,71 +1,139 @@
 ---
 title: "A3: Incarceration"
+author: "Alison Milles"
+date: "2024-05-26"
 output: html_document
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
 ### Introduction
 
-An introduction of the problem domain and a description of the variable(s) you are choosing to analyze (and why!)
+When looking at this data, it was clear that the main issue was racial disparities. In the United States as well as in Washington state. The description that I decided were important to find were where the black prison population was the highest, lowest, what urban county has the most white prisoners, what urban county has the most black prisoners, and the average black and white prison rate in King County. I am choosing to analyze these because I feel the easiest, simplest way to demonstrate that there is a racial disparity is through comparing the same geographical location. Hence, King County. Furthermore, I felt it was important to see the urban counties in which the white and black populations are the highest. This is because I think it is important to compare the areas in which there is a high population and also a high black prison rate. This highlights the idea that racial disparity in incarceration exists even in cities, as well as rural areas. Finally, in general, I think it is important to know the areas in which the black prison rate is the highest and lowest.
 
 ### Summary Information
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
-
-These will likely be calculated using your DPLYR skills, answering questions such as: 
-
-- What is the average value of my variable across all the counties (in the current year)?
-- Where is my variable the highest / lowest?
-- How much has my variable change over the last N years?
-
-Feel free to calculate and report values that you find relevant. Again, remember that the purpose is to think about how these measure of incarceration vary by race.
+As mentioned in the introduction, I wanted to focus on the difference between white and black prison rates specifically. This is because I feel there is the biggest disparity between the two, and it shows the racial disparities and how broken our system is. Using DPLYR, the first value I found is the highest rate of black prisoners in a county. This value turned out to be Mitchell County in Georgia. The second value I calculated was the county in which the lowest black prison rate is located. The answer I got for this was Winston County, in Alabama. I did these values to see if there was a regional difference in the incarceration rate of black individuals, but I did not find anything of weight. Moving on, for the third value I calculated the King County, Washington black prison rate in the most recent year of the data (2018). This was calculated to be 1190.4. My fourth value was a comparison of that, with being the white prison rate in King County in the most recent year (2018). This was calculated to be 156.32. Even in 2018, not that long ago, there is still that much of a disparity. King County should be noted as having far more white people than black people as well. My next two values are also comparisons of each other. The first one is the urban county that has the highest black prison rate, which is Arlington County, in Virginia. The second value, was the highest rate of white incarceration in an urban county, which was Oklahoma County, Oklahoma. These were compared to see the difference of a white incarceration rate versus a black incarceration rate even in highly populated areas.
 
 ### The Dataset
 
-Who collected the data?  
-How was the data collected or generated?  
-Why was the data collected?  
-How many observations (rows) are in your data?  
-How many features (columns) are in the data?  
-What, if any, ethical questions or questions of power do you need to consider when working with this data?  
-What are possible limitations or problems with this data?   (at least 200 words)
+Who collected the data?
 
+The Vera Institute collected this data. 
+
+How was the data collected or generated?
+
+The data was collected by merging multiple data sets to create one big data set that included prison rates and jail rates at the county level. They got the data specifically from the National Corrections Reporting Program, which collects data on admissions down to the individual. They also used data from the Deaths in Custody Reporting Program. This data was for the jail population from 2000 to 2013. Data from the Annual Survey of Jails was also used for samples of counties. Additionally, they used data from the Census of Jails which provides data on all the counties in the U.S. This data also uses data collected by the U.S. Census Bureau and the CDC.
+
+Why was the data collected?
+
+The data was collected because typically data of incarceration rates are typically based on the state level. Having data on the county level can help identify the issues with incarceration based on the judges or county officials, since they are typically the ones deciding who should go to jail versus prison and how long. This data was also collected because there is a clear issue of racial disparity of incarceration in the United States. Having data go down to the county level allows a better zoomed-in look, and make it easier to identify specific problems with the bigger issue at hand.
+
+How many observations (rows) are in your data?
+
+There are 153811 rows in the us prison data dataset, and 1131 rows in the Washington county data.
+
+How many features (columns) are in the data?
+
+There are 23 columns in both the us prison data frame and the Washington county dataset.
+
+What, if any, ethical questions or questions of power do you need to consider when working with this data?
+
+The ethical questions I think it is only fair to ask is things that have to do with bias, as well as marginalization. Because we are looking into incarceration rates, this is a very sensitive topic that can be interpreted in many ways. As the United States is often criticized for disproportionately affecting people of color, it is important to recognize this and handle that information with care. It is important to be mindful of that context when examining this data. Furthermore, it is important to think about socioeconomic factors that tie into the incarceration rates as well. For example, it is known that typically people that are incarcerated are low income.
+
+What are possible limitations or problems with this data? (at least 200 words)
+
+The possible limitations of this data is that some of it may not be reported. When dealing with a big country that has many counties, things can get overlooked and not counted correctly in just a few counties and potentially skew the data. Additionally, these data sets specifically have the limitation of not having data for certain variables in certain years. Specifically in the rates variables, there is not a lot of data for awhile in the beginning. This can further skew the data and also make it harder to look at the data year by year. Even comparing from the start of the data collection to the most recent year is a limitation, given that even recently for King County there was not data reported for the rate. The rates specifically are important because I think it gives a good direct comparison between the incarceration rate of each race provided in the data.
 
 ### Trends Over Time Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+This graph shows the trends in black versus white prison rates in King County, Washington. The clear pattern that emerged was that black incarceration rates are still by far higher than white incarceration rates. This is not surprising, and has been a trend since the beginning of this data collection. Furthermore, it should be noted that by this graph it also shows the black incarceration rate declining in more recent years. I decided to include this chart because it showed something that was important to us since we reside in King County. I also found it interesting, because there is a noteable issue with Seattle police and their racism and overall bigotry. 
 
-The first chart that you will create and include will show the trend over time of your variable/topic. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
+```{r}
 
-- Show more than one, but fewer than ~10 trends
-  - This may mean showing the same measure for different locations or different racial groups. Think carefully about a meaningful comparison of locations (e.g., the top 10 counties in a state, top 10 states, etc.)
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
+years_king <- yr_wa %>%
+  filter(county_name == "King County") %>%
+  pull(year)
 
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
+black_prison_rate_king <- yr_wa %>%
+  filter(county_name == "King County") %>%
+  pull(black_prison_pop_rate)
 
-Here's an example of how to run an R script inside an RMarkdown file:
+white_prison_rate_king <- yr_wa %>%
+  filter(county_name == "King County") %>%
+  pull(white_prison_pop_rate)
 
-``````{r, echo = FALSE, code = readLines("chart1_example.R")}
+ggplot() +
+  geom_line(aes(x = years_king, y = black_prison_rate_king, colour = "Black Prison Rate")) +
+  geom_line(aes(x = years_king, y = white_prison_rate_king, colour = "White Prison Rate")) +
+  labs(
+    title = "Trends in Black and White Prison Rates in King County, WA",
+    x = "Year",
+    y = "Black vs. White Prison Rates",
+    color = "Mean Prison Rates"
+  )
+
 ```
 
 ### Variable Comparison Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+```{r}
+king_county_bpr <- yr_wa %>%
+  filter(county_name == "King County") %>%
+  pull(black_prison_pop_rate)
 
-The second chart that you will create and include will show how two different (continuous) variables are related to one another. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
+king_county_total_pop <- yr_wa %>%
+  filter(county_name == "King County") %>%
+  pull(total_pop)
 
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- If you choose to add a color encoding (not required), you need a legend for your different color and a clear legend title
+data <- data.frame(king_county_total_pop, king_county_bpr)
+
+ggplot(data = data) +
+  geom_point(aes(x = king_county_total_pop,  y = king_county_bpr, color = "Percent of Black Prisoners according to the total population")) +
+  scale_color_manual(values = c("Black", "Blue")) +
+  labs(
+    title = "Comparison of the Total Population versus Black Prison Populations in King County",
+    x = "King County Total Population",
+    y = "King County Black Prison Population",
+    color = "Prison Rate/Population"
+  )
+```
+
+This chart compared the total population of King County to its black incarceration rate. This was an interesting comparison because it showcased the percentage of black people who are incarcerated compared to the population. Overall, this chart shows  similar answer to the chart above, with the rate of black incarceration compared to the overall population was very high, but has been on the decline more recently. I thought this was an important chart to make because I feel it showcases the problem of racial disparity of incarceration of black people very well. Comparing something such as the total population, allows for a feel of the criminal justice system being very unfair to people of color. 
 
 ### Map
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+This map was important to make because it shows the black prison rates of each state specifically in the most recent year of this data set. This was important for me to make, because it shows the problem of incarceration all throughout the United States. It shows that is not just a one state or one county issue, but a bigger issue all throughout the United States. It was important to see this visually. I think often times seeing just the data in a data table does not do it justice or give any real feeling or reaction to the data. Because incarceration is such a big issue that the United States has, it is only fair to show it geographically, across a United States map. 
 
-The last chart that you will create and include will show how a variable is distributed geographically. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
+```{r}
+us_states <- us_prison_rates %>%
+  group_by(state) %>%
+  filter(!is.na(black_prison_pop_rate)) %>%
+  filter(year == max(year)) %>%
+  summarise(mean_black_prison_rate = mean(black_prison_pop_rate, na.rm = TRUE))
 
-- Your map needs a title
-- Your color scale needs a legend with a clear label
-- Use a map based coordinate system to set the aspect ratio of your map
+map_data <- map_data("state")
 
+
+states_map <- map_data("state") %>%
+  rename(state = region) %>%
+  left_join(us_states, by = "state") %>%
+  distinct(state, long, lat, group, .keep_all = TRUE) %>%
+  reframe(
+    mean_black_prison_rate = unique(us_states$mean_black_prison_rate),
+    state = unique(us_states$state),
+  ) %>%
+  filter(!is.na(mean_black_prison_rate))
+  
+
+  ggplot(states_map) +
+  geom_polygon(mapping = aes(x = long, y = lat, group = group, fill = mean_black_prison_rate), color = "white", linewidth = .1) +
+  labs(
+    title = "Black Prison Rates Throughout the States in the U.S. in 2018",
+    fill = "Black Prison Rate",
+  ) +
+  coord_map() +
+  scale_fill_continuous(low = "#78787879", high = "#155555")
+```
