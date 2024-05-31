@@ -1,12 +1,17 @@
 ---
-title: "A3: Incarceration"
+title: 'A5: Incarceration'
 author: "Alison Milles"
 date: "2024-05-26"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+opts_knit$set(stop_on_error = 2)
+opts_chunk$set(error = TRUE)
+library(dplyr)
+library(ggplot2)
+library(tidyverse)
 ```
 
 ### Introduction
@@ -21,7 +26,7 @@ As mentioned in the introduction, I wanted to focus on the difference between wh
 
 Who collected the data?
 
-The Vera Institute collected this data. 
+The Vera Institute collected this data.
 
 How was the data collected or generated?
 
@@ -49,10 +54,9 @@ The possible limitations of this data is that some of it may not be reported. Wh
 
 ### Trends Over Time Chart
 
-This graph shows the trends in black versus white prison rates in King County, Washington. The clear pattern that emerged was that black incarceration rates are still by far higher than white incarceration rates. This is not surprising, and has been a trend since the beginning of this data collection. Furthermore, it should be noted that by this graph it also shows the black incarceration rate declining in more recent years. I decided to include this chart because it showed something that was important to us since we reside in King County. I also found it interesting, because there is a noteable issue with Seattle police and their racism and overall bigotry. 
+This graph shows the trends in black versus white prison rates in King County, Washington. The clear pattern that emerged was that black incarceration rates are still by far higher than white incarceration rates. This is not surprising, and has been a trend since the beginning of this data collection. Furthermore, it should be noted that by this graph it also shows the black incarceration rate declining in more recent years. I decided to include this chart because it showed something that was important to us since we reside in King County. I also found it interesting, because there is a notable issue with Seattle police and their racism and overall bigotry.
 
 ```{r}
-
 years_king <- yr_wa %>%
   filter(county_name == "King County") %>%
   pull(year)
@@ -74,7 +78,6 @@ ggplot() +
     y = "Black vs. White Prison Rates",
     color = "Mean Prison Rates"
   )
-
 ```
 
 ### Variable Comparison Chart
@@ -101,11 +104,11 @@ ggplot(data = data) +
   )
 ```
 
-This chart compared the total population of King County to its black incarceration rate. This was an interesting comparison because it showcased the percentage of black people who are incarcerated compared to the population. Overall, this chart shows  similar answer to the chart above, with the rate of black incarceration compared to the overall population was very high, but has been on the decline more recently. I thought this was an important chart to make because I feel it showcases the problem of racial disparity of incarceration of black people very well. Comparing something such as the total population, allows for a feel of the criminal justice system being very unfair to people of color. 
+This chart compared the total population of King County to its black incarceration rate. This was an interesting comparison because it showcased the percentage of black people who are incarcerated compared to the population. Overall, this chart shows similar answer to the chart above, with the rate of black incarceration compared to the overall population was very high, but has been on the decline more recently. I thought this was an important chart to make because I feel it showcases the problem of racial disparity of incarceration of black people very well. Comparing something such as the total population, allows for a feel of the criminal justice system being very unfair to people of color.
 
 ### Map
 
-This map was important to make because it shows the black prison rates of each state specifically in the most recent year of this data set. This was important for me to make, because it shows the problem of incarceration all throughout the United States. It shows that is not just a one state or one county issue, but a bigger issue all throughout the United States. It was important to see this visually. I think often times seeing just the data in a data table does not do it justice or give any real feeling or reaction to the data. Because incarceration is such a big issue that the United States has, it is only fair to show it geographically, across a United States map. 
+This map was important to make because it shows the black prison rates of each state specifically in the most recent year of this data set. This was important for me to make, because it shows the problem of incarceration all throughout the United States. It shows that is not just a one state or one county issue, but a bigger issue all throughout the United States. It was important to see this visually. I think often times seeing just the data in a data table does not do it justice or give any real feeling or reaction to the data. Because incarceration is such a big issue that the United States has, it is only fair to show it geographically, across a United States map.
 
 ```{r}
 us_states <- us_prison_rates %>%

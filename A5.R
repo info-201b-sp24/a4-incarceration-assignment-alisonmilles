@@ -13,6 +13,8 @@ row <- nrow(us_prison_rates)
 col <- ncol(us_prison_rates)
 row1 <- nrow(yr_wa)
 col2 <- ncol(yr_wa)
+
+
 # Where is the black prison population rate the highest? (county/state)
 black_pop_highest <- us_prison_rates %>%
   filter(black_prison_pop_rate == max(black_prison_pop_rate, na.rm = TRUE)) %>%
